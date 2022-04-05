@@ -1,0 +1,37 @@
+aiohttp==3.7.4.post0
+asgiref==3.4.1
+async-timeout==3.0.1
+attrs==21.2.0
+bidict @ file:///tmp/build/80754af9/bidict_1607541094382/work
+certifi==2021.5.30
+cffi @ file:///tmp/build/80754af9/cffi_1625814693446/work
+chardet==4.0.0
+charset-normalizer==2.0.4
+click==8.0.1
+cryptography @ file:///tmp/build/80754af9/cryptography_1616769182610/work
+dnspython==1.16.0
+eventlet @ file:///tmp/build/80754af9/eventlet_1614796446128/work
+greenlet @ file:///tmp/build/80754af9/greenlet_1628888132158/work
+gunicorn @ file:///tmp/build/80754af9/gunicorn_1617120646806/work
+h11==0.12.0
+httptools==0.2.0
+idna==3.2
+importlib-metadata==4.8.1
+multidict==5.1.0
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1608057966937/work
+python-dotenv==0.19.0
+python-engineio @ file:///tmp/build/80754af9/python-engineio_1618814346232/work
+python-socketio @ file:///tmp/build/80754af9/python-socketio_1624540179952/work
+PyYAML==5.4.1
+requests==2.26.0
+six @ file:///tmp/build/80754af9/six_1623709665295/work
+typing-extensions==3.10.0.2
+urllib3==1.26.6
+uvicorn==0.15.0
+uvloop==0.16.0
+watchgod==0.7
+websocket-client==1.2.1
+websockets==10.0
+yarl==1.6.3
+zipp==3.5.0

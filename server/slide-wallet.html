@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Slide Walelt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+
+  <style>
+    .full-width{
+      width:100%;
+    }
+		.picture {
+			display: inline;
+			width: 49vmax;
+			height: 49vmax;
+			background-color: #000000;
+			border-radius: 2vmax;
+			margin: 1vmax;
+		}
+    .picture2 {
+      			/*display: inline-block;*/
+			width: 46vmax;
+			height: 37vmax;
+			background-color: #000000;
+			border-radius: 2vmax;
+			margin: 1vmax auto;
+			margin-left: 1vmax;
+			margin-right: 1vmax;
+			margin-top: 1vmax;
+			margin-bottom: 1vmax;
+			object-fit:cover; /* video fill all view of video tag*/
+			/*margin: 1vmax auto;*/
+    }
+  </style>
+</head>
+
+<body>
+  <div class="jumbotron text-center">
+    <h1>Sync-Slide</h1>
+    <p>萬人共賞投影片</p>
+    <div class="form-group">
+      <label for="exampleInputEmail1" style='display:none;'>Slide Location</label>
+      <input id="slide_location_text_field" style='display:none;' type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Slide Location">
+
+      <label for="exampleInputEmail1">Slide Name 投影片名稱</label>
+      <input id="slide_name_text_field" type="email" class="form-control text-center" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Slide Name">
+      <small id="emailHelp" class="form-text text-muted">people will not share your slide with anyone else without allowing.</small>
+
+    </div>
+    <p>Share Slide with 1~10,000 people in real-time, secretly</p>
+  </div>
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="btn-light h2">
+          Slide Wallet
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="container" id="data-table">
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <h3 class="text-center">上課內容</h3>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="CodingNewbie_Class1_Variable.ipynb" title="按此下載 CodingNewbie_Class1_Variable.ipynb" target="_blank">新手 第一課<br>變數</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="CodingNewbie_Class2_LoopAndFunction.ipynb" title="按此下載 CodingNewbie_Class2_LoopAndFunction.ipynb" target="_blank">新手 第二課<br>迴圈與函數</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="CodingNewbie_Class2_LoopAndFunction_Plus.ipynb" title="按此下載 CodingNewbie_Class2_LoopAndFunction_Plus.ipynb" target="_blank">新手 第二課<br>函數加強解說</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="CodingNewbie_Class3_DataStructure.ipynb" title="按此下載 CodingNewbie_Class3_DataStructure.ipynb" target="_blank">新手 第三課<br>資料結構</a></p>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h3 class="text-center">作業練習</h3>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="https://www.youtube.com/watch?v=0bcoyAW_0lw" title="按此開啟YouTube影片，查看作業怎麼寫" target="_blank">作業<br>怎麼寫?</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="HomeWork A.ipynb" title="下載作業 HomeWork A.ipynb" target="_blank">新手作業A<br>變數與回圈</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="HomeWork B.ipynb" title="下載作業 HomeWork B.ipynb" target="_blank">新手作業B<br>多層回圈</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="HomeWork CC.ipynb" title="下載作業 HomeWork CC.ipynb" target="_blank">新手作業C<br>函數</a></p>        
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="HomeWork D1.ipynb" title="下載作業 HomeWork D1.ipynb" target="_blank">新手作業D<br>TUI 動畫</a></p>        
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h3 class="text-center">補充資料</h3>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Built-In Type.ipynb" title="按此下載 Built-In Type.ipyn " target="_blank">Built-In Type<br>內建型別</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Variables.ipynb" title="按此下載 Variables.ipynb " target="_blank">Variable<br>變數</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Expression.ipynb" title="按此下載 Expression.ipynb " target="_blank">Expression<br>表示式</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Flow Control.ipynb" title="按此下載 Flow Control.ipynb " target="_blank">Flow Control<br>流程控制</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Function.ipynb" title="按此下載 Function.ipynb " target="_blank">Function<br>函數</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" href="Data Structures.ipynb" title="按此下載 Data Structures.ipynb " target="_blank">Data Structures<br>資料結構</a></p>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <h3 class="text-center">其它簡報</h3>
+        <p><a id="flutter_test_btn" data-toggle="tooltip" class="btn btn-info full-width" title="選擇 Flutter 教學">Flutter 教學<br>Hello World</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" title="選擇 Virtual Terminal 簡介">Virtual<br>Terminal</a></p>
+        <p><a data-toggle="tooltip" class="btn btn-info full-width" title="選擇 藍芽安全介紹">Bluetooth<br>Security</a></p>
+        
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script>
+
+//Ref https://stackoverflow.com/questions/246801/how-can-you-encode-a-string-to-base64-in-javascript since btoa and atob cannot support base64 if not Latin1
+//Ref https://gist.github.com/Hyvi/1350603/b65c127802dbc6949c181044416adbb4b7aed534 Use UTF-8 way to solve this issue to support Chinese and English
+function utf8_to_b64( str ) {
+    return window.btoa(unescape(encodeURIComponent( str )));
+}
+function b64_to_utf8( str ) {
+    return decodeURIComponent(escape(window.atob( str )));
+}
+function my_encode(str) {
+  return utf8_to_b64(str)
+}
+function my_decode(str) {
+  return b64_to_utf8(str)
+}
+// Usage:
+//utf8_to_b64('✓ à la mode'); // "4pyTIMOgIGxhIG1vZGU="
+//b64_to_utf8('4pyTIMOgIGxhIG1vZGU='); // "✓ à la mode"
+
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+    //$('#newbie_class1').tooltip()
+    /*
+    $("newbie_class1").click(function(){
+      $("#test").hide();
+    });
+    */
+  });
+  document.getElementById('flutter_test_btn').addEventListener('click', ()=>{
+    const hi_flutter_url = "https://www.canva.com/design/DAEeUzCYfNQ/3xUAXG_faPlhCRrCF8G-Kw/view"
+    const hi_flutter_name = "Milo 教 Flutter"
+    const urlField = document.getElementById('slide_location_text_field')
+    const nameField = document.getElementById('slide_name_text_field')
+    urlField.value = hi_flutter_url
+    nameField.value = hi_flutter_name
+    //"https://www.canva.com/design/DAEeUzCYfNQ/3xUAXG_faPlhCRrCF8G-Kw/view?utm_content=DAEeUzCYfNQ&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton"
+  })
+
+  function reloadDataTable() {
+    //TODO get data from some website to get json data
+    //Assume json data we get here
+    jsondata = {
+      fourColumns: [
+        {
+          title:"其它簡報",
+          datas:[
+            {btnText:'Hi Flutter',tipText:'開啟 Milo教Flutter', realUrl:'https://www.canva.com/design/DAEeUzCYfNQ/3xUAXG_faPlhCRrCF8G-Kw/view', slideName:'Hi Flutter' },
+            {btnText:'PyCon TW<br>aiortc', tipText:'開啟 PyCon TW 2021 簡報 Python aiortc', realUrl:'https://www.canva.com/design/DAEkk9XLz7s/i0___crEfNFA3J0WXT3p1Q/view', slideName:'PyCon TW 2021:Python aiortc'},
+            {btnText:'Gather<br>遠端照護', tipText:'開啟 Gather Town 遠端照護投影片', realUrl:'https://www.canva.com/design/DAEoOlf1dlA/WDPbOdGXw7fMn1H_h6MlBg/view', slideName:'Gather Town 遠端照護'},
+            {btnText:'GT發展現況<br>與未來展望', tipText:'開啟了解 Gather Town 發展現況與未來展望', realUrl:'https://www.canva.com/design/DAEn6nei_zg/emEJBzyS7hWY09_j74C_tQ/view', slideName:'Gather Town 發展現況與未來展望'},
+            {btnText:'GT教育上<br>應用實例', tipText:'開啟了解 Gather Town 教育上應用實例', realUrl:'https://www.canva.com/design/DAEsj3hk2pM/5dehvor2VE4aIL8jTKjesQ/view', slideName:'Gather Town 教育上的應用'},
+            {btnText:'Virtual<br>Terminal',tipText:'開啟 Virtual Terminal 介紹', realUrl:'www.google.com', slideName:'Virtual Terminal 介紹' },
+            {btnText:'藍芽安全<br>分析介紹',tipText:'開啟 藍芽安全分析介紹', realUrl:'www.google.com', slideName:'藍芽安全分析介紹' },
+          ]
+        },
+        {
+          title:"上課內容",
+          datas:[
+            {btnText:'新手 第一課<br>變數',tipText:'按此下載 CodingNewbie_Class1_Variable.ipynb', realUrl:'www.google.com', slideName:'Python上課 變數' },
+            {btnText:'新手 第二課<br>迴圈與函數',tipText:'按此下載 CodingNewbie_Class2_LoopAndFunction.ipynb', realUrl:'www.facebook.com', slideName:'Python上課 迴圈與函數' },
+          ]
+        },
+        {
+          title:"GT營運報",
+          datas:[
+            {btnText:'營運第1月<br>初成長',tipText:'開啟7月報', realUrl:'www.google.com', slideName:'Gather Town 7 月報' },
+            {btnText:'營運第2月<br>行銷月',tipText:'開啟8月報', realUrl:'www.google.com', slideName:'Gather Town 8 月報' },
+            {btnText:'營運第3月<br>行銷月',tipText:'開啟9月報', realUrl:'www.google.com', slideName:'Gather Town 9 月報' },
+          ]
+        },
+        {
+          title:"補充資料",
+          datas:[
+            {btnText:'btnText1',tipText:'tipText1', realUrl:'tipText2' },
+            {btnText:'btnText2',tipText:'tipText2', realUrl:'tipText2' },
+          ]
+        }
+      ]
+    };
+
+    dataTableHtmlStr = `
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <h3 class="text-center">${jsondata.fourColumns[0].title}</h3>
+          ${jsondata.fourColumns[0].datas.reduce(
+            (updated, item) => updated.concat(
+              `<p>
+                <a onclick="anchorSlide('${my_encode(JSON.stringify(item))}');" data-toggle="tooltip" class="btn btn-info full-width" title="${item.tipText}">
+                  ${item.btnText}
+                </a>
+              </p>`
+            ), '')
+          }
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h3 class="text-center">${jsondata.fourColumns[1].title}</h3>
+          ${jsondata.fourColumns[1].datas.reduce(
+            (updated, item) => updated.concat(
+              `<p>
+                <a onclick="anchorSlide('${my_encode(JSON.stringify(item))}');" data-toggle="tooltip" class="btn btn-info full-width" title="${item.tipText}">
+                  ${item.btnText}
+                </a>
+              </p>`
+            ), '')
+          }
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h3 class="text-center">${jsondata.fourColumns[2].title}</h3>
+          ${jsondata.fourColumns[2].datas.reduce(
+            (updated, item) => updated.concat(
+              `<p>
+                <a onclick="anchorSlide('${my_encode(JSON.stringify(item))}');" data-toggle="tooltip" class="btn btn-info full-width" title="${item.tipText}">
+                  ${item.btnText}
+                </a>
+              </p>`
+            ), '')
+          }
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <h3 class="text-center">${jsondata.fourColumns[3].title}</h3>
+          ${jsondata.fourColumns[3].datas.reduce(
+            (updated, item) => updated.concat(
+              `<p>
+                <a onclick="anchorSlide('${my_encode(JSON.stringify(item))}');" data-toggle="tooltip" class="btn btn-info full-width" title="${item.tipText}">
+                  ${item.btnText}
+                </a>
+              </p>`
+            ), '')
+          }
+        </div>
+      </div>
+    `;
+    document.getElementById('data-table').innerHTML = dataTableHtmlStr
+  }
+
+  function anchorSlide(itemStr) {
+    item = JSON.parse(my_decode(itemStr))
+    const realUrl = item.realUrl
+    const slideName = item.slideName
+    console.log("anchorSlide() is called and data is")
+    console.log(item)
+    const urlField = document.getElementById('slide_location_text_field')
+    const nameField = document.getElementById('slide_name_text_field')
+    urlField.value = item.realUrl
+    nameField.value = item.slideName
+    //slide_location_text_field
+  }
+  reloadDataTable()
+</script>
+</html>

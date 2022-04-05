@@ -1,0 +1,324 @@
+<html>
+  <head>
+    <title>Sync</title>
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="626982802872-rjscesaqmp6tbo1l3lgo7pkff69l3nsi.apps.googleusercontent.com">
+
+  </head>
+  <body id="mybody">
+
+  <!-- Cusomized Button way by refer https://developers.google.com/identity/sign-in/web/build-button -->
+  <!-- default button way is refer here https://developers.google.com/identity/sign-in/web-->
+  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render(
+        'my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+  
+    <div id="sync-slide" style="display:none;">
+      <p id="cur-room-name">
+      </p>
+
+      <label for="fname2">Cur URL:</label>
+      <input type="text" id="cur_url_text_field" name="fname2" value="https://www.google.com"><br><br>
+      <button id='multicast_url_btn'>
+        Multi-cast URL
+      </button>
+      
+      <br>
+      <p id="sync_url_lbl">
+      </p>
+
+
+      <br>
+      <label for="fname">Room Name:</label>
+      <input type="text" id="room_name_text_field" name="fname"><br><br>
+
+    </div>
+
+    <script>
+      const sio = io('wss://slide.covidicq.net', {
+        //transports: ['websocket', 'polling'],
+        transportOptions: {
+          polling: {
+            extraHeaders: {
+              'X-Username': window.location.hash.substring(1)
+              //For example, Go http://localhost:8000/#alice will set username as alice
+            }
+          }
+        }        
+      });
+
+      const generateRandomString = (num) => {
+          //const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+          //const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+          const characters ='01234567890';
+          let result1= '';
+          const charactersLength = characters.length;
+          for ( let i = 0; i < num; i++ ) {
+              result1 += characters.charAt(Math.floor(Math.random() * charactersLength));
+          }
+          return result1;
+      }
+
+      const dbg_web_turnon = true
+      const dbg_show_sync_url = (curUrl) => {
+        if(dbg_web_turnon === true) {
+          document.getElementById('sync_url_lbl').innerText = curUrl
+        }
+      }
+      const dbg_show_room_name = (curRoomName) => {
+        if(dbg_web_turnon === true) {
+          document.getElementById('cur-room-name').innerText = curRoomName
+        }
+      }
+      if(dbg_web_turnon === false) {
+        var console = {};
+        console.log = function(){};
+      }
+
+      curRoomName = null
+      countedSendPacketId = 0
+      largestRecvPackedId = -1 
+      mySID = 'InitNoSid'
+      function triggerMulticastUrl(newUrl) {
+        hostCurURL = newUrl
+        document.getElementById('cur_url_text_field').value = hostCurURL
+        if (curRoomName !== null) {
+          console.log("request to send to room:" + curRoomName + ", with url = " + hostCurURL)
+          console.log('triggerMulticastUrl() emit room = ' +curRoomName+ ' hostCurURL = ' + hostCurURL)
+          sio.emit('multicast', {senderSid: mySID, packetId:countedSendPacketId++, channel:'sync_slide_channel', room:curRoomName, msg:hostCurURL}, (result)=>{
+            mySID = result.sid
+          })
+        }
+      }
+
+      function triggerCreateRoom(externalUrl) {
+        countedSendPacketId = 0 //change back to inti value 0 when create another room 
+        console.log("call triggerCreateRoom() with externalUrl = " + externalUrl)
+        document.getElementById('cur_url_text_field').value = externalUrl
+        //document.getElementById('sync_url_lbl').innerText = externalUrl
+        dbg_show_sync_url(externalUrl)
+        try {
+          roomName = generateRandomString(4); 
+          data = {room: roomName, url: externalUrl}
+          sio.emit('createroom', data, (result) => {
+            console.log(result);
+            curRoomName = result.room
+            curUrl = result.url
+            //document.getElementById('sync_url_lbl').innerText = curUrl
+            dbg_show_sync_url(curUrl)
+
+            console.log('curRoomName = ' + curRoomName)
+            //document.getElementById('cur-room-name').innerText = curRoomName
+            dbg_show_room_name(curRoomName)
+
+            //Give android app the room name
+            try {
+              if(android_webview) {
+                msg = curRoomName
+                console.log("msg for android is ->" + msg)
+                android_webview.notifyRoomName(msg);
+              } else {
+
+              }
+            } catch(e){
+
+            }
+            
+            //Let android know createRoomFinished
+            try {
+              if(android_webview) {
+                android_webview.createRoomFinished();
+              } else {
+
+              }
+            } catch(e){
+
+            }
+            
+
+
+          })
+        } catch(e) {
+          console.log("catch error exception when call triggerCreateRoom()")
+        }
+      }
+
+      function triggerJoinRoom(name) {
+        console.log("call triggerJoinRoom("+name+")")
+        largestRecvPackedId = -1 //change back to init value -1 when join another room 
+        document.getElementById('room_name_text_field').value = name 
+
+        try {
+          joinroomName = name;
+          sio.emit('joinroom', joinroomName, (result) => {
+            console.log(result);
+            if (result.room === "failed") {
+              console.log("Join room failed for the room name: "+ joinroomName)
+            }
+            //curRoomName = joinroomName
+            curRoomName = result.room 
+            curUrl = result.url 
+            // Expect to refresh URL when join succeed 
+            //document.getElementById('sync_url_lbl').innerText = curUrl
+            dbg_show_sync_url(curUrl)
+            updatePageForUrl(curUrl)
+            //document.getElementById('cur-room-name').innerText = curRoomName
+            dbg_show_room_name(curRoomName)
+
+          })
+        } catch(e) {
+          console.log("catch error exception when call triggerJoinRoom()")
+        }
+      }
+
+
+      function addEventListenersForSyncSlide() {
+        document.getElementById('multicast_url_btn').addEventListener('click', (e)=>{
+          console.log('multicast_url_btn click')
+          hostCurURL = document.getElementById('cur_url_text_field').value
+          if (curRoomName !== null) {
+            console.log("request to send to room:" + curRoomName + ", with url = " + hostCurURL)
+
+            sio.emit('multicast', {channel:'sync_slide_channel', room:curRoomName, msg:hostCurURL}, (result)=>{
+            })
+          }
+        })
+
+        sio.on('sync_slide_channel', (data) => {
+          packetId = data.packetId
+          if ( largestRecvPackedId >= packetId )  {
+            return //don't process for any previous old Packet
+          } else {
+            largestRecvPackedId = packetId
+          }
+          if (data.senderSid === mySID) {
+            return //don't process for any packet from myself because I'm only publisher for packet (Only one Slide Host)
+          }
+          console.log('sio.on sync_slide_channel called')
+          console.log(data)
+          //document.getElementById('sync_url_lbl').innerText = data.msg
+          dbg_show_sync_url(data.msg)
+          curUrl = data.msg
+          updatePageForUrl(curUrl)
+        })
+        
+
+        //Test Address for canva
+        //https://www.canva.com/design/DAEkk9XLz7s/i0___crEfNFA3J0WXT3p1Q/view
+      }
+      addEventListenersForSyncSlide()
+
+      function updatePageForUrl(curUrl) {
+        //Change url if it is android
+        try {
+          if(android_webview) {
+            msg = curUrl
+            console.log("msg for android is ->" + msg)
+            android_webview.notifyRemoteURLWithPostMessage(msg);
+          } else {
+
+          }
+        } catch(e){
+
+        }
+        //change url if it is chrome extension in popup 
+        //Refer MV3 https://stackoverflow.com/questions/1891738/how-to-modify-current-url-location-in-chrome-via-extensions
+        try {
+          if(chrome) {
+            chrome.tabs.query({currentWindow: true, active: true}, function (tab) {
+              chrome.tabs.update(tab.id, {url: curUrl});
+            });
+          }
+        } catch(e) {
+
+        }
+      }
+
+      sio.on('connect', () => {
+        console.log('connected');
+        // sio.emit('sum', {numbers: [1, 2]})
+        sio.emit('sum', {numbers: [1, 2]}, (result) => {
+          console.log(result);
+        });
+      });
+
+      sio.on('connect_error', (e) => {
+        //console.log(e) //show error stack
+        sio.io.opts.transports = ["polling", "websocket"];
+        console.log(e.message) 
+      })
+
+      sio.on('disconnect', () => {
+        console.log('disconnected');
+      });
+
+      sio.on('user_joined', (username) => {
+        console.log('User ' + username + ' has joined')
+      })
+
+      sio.on('user_left', (username) => {
+        console.log('User ' + username + ' has left')
+      })
+      
+      // sio.on('sum_result', (data) => {
+      //  console.log(data);
+      // });
+
+      sio.on('mult', (data, cb) => {
+        console.log('sio.on mult called')
+        const result = data.numbers[0] * data.numbers[1];
+        cb(result);
+      })
+
+      sio.on('test_channel', (data) => {
+        console.log('sio.on test_channel called')
+        console.log(data)
+      })
+
+      sio.on('client_count', (count) => {
+        console.log("There are " + count + " connected clients.");
+      })
+
+      sio.on('room_name', (room_name) => {
+        console.log('Join the room named ' + room_name)
+      })
+
+      sio.on('room_count', (count) => {
+        console.log('There are ' + count + ' clients in my room')
+      })
+
+    </script>
+  </body>
+</html>
