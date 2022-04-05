@@ -374,7 +374,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         final String pureUrl = (url.split("#")[0]).split("\\?")[0];
         if( mSlideLoadedUrl.equals(pureUrl) || mSlideLoadedUrl.equals("")) {
             final Handler handler1 = new Handler(Looper.getMainLooper());
-            handler1.postDelayed(r, 100);
+            //handler1.postDelayed(r, 100);
         } 
         mSlideLoadedUrl = pureUrl;
 
