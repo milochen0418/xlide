@@ -4,9 +4,9 @@ And the original name is Sync-Slide
 
 
 ## Environment setup
-## Server  ./server 
+### Server  ./server 
 you can start your server by following this document ./server/README.md
-## Android App ./android
+### Android App ./android
 Open the android project and build it. 
 
 
