@@ -36,8 +36,11 @@ That's why I have this idea and make it.
 There is a news for Sync-Slide here
 https://vision.udn.com/vision/story/12425/6110605
 
-Announcing in social network. 
+Announcing in social network. (35K+ read, 50+ share)  
 https://www.facebook.com/groups/metaversity/posts/340779141285880/
 
 
+## 3. download
+Scan QRCode to download current android app.  
+![qrcode (1)](https://user-images.githubusercontent.com/12568287/162193581-c415a713-98af-44c1-b642-c3abf2af2010.png)
 
