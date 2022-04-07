@@ -69,8 +69,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         setupWebViews();
         super.onStart();
     }
-    static public String sUrl = "";
-    public boolean mIsSlideViewTouchDisable = false; 
+    static public String sUrl = "https://www.canva.com/design/DAEeUzCYfNQ/UMd107pfFzu_1fXYxH2f2A/view#1";
+    public boolean mIsSlideViewTouchDisable = false; //first empty webview is okay to control
+
     @Override
     public void onBackPressed() {
 
@@ -84,7 +85,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
     }
 
     protected void setupWebViews() {
-        Log.i(TAG, "setupWebViews call");
         mSlideLoadedUrl = "";
         try {
             mSocketIoView = findViewById(R.id.socketio_webview);
@@ -108,9 +108,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         webSlideSettings.setJavaScriptEnabled(true);
         webSlideSettings.setAllowFileAccessFromFileURLs(true);
         webSlideSettings.setAllowUniversalAccessFromFileURLs(true);
-        webSlideSettings.setDomStorageEnabled(true); //允許使用localstorage
+        webSlideSettings.setDomStorageEnabled(true);
 
-        
         CookieManager.getInstance().setAcceptCookie(true);
         if(android.os.Build.VERSION.SDK_INT >= 21)
             CookieManager.getInstance().setAcceptThirdPartyCookies(mSocketIoView, true);
@@ -120,16 +119,15 @@ public class MainActivity extends Activity implements View.OnClickListener{
         webSocketioSettings.setJavaScriptEnabled(true);
         webSocketioSettings.setAllowFileAccessFromFileURLs(true);
         webSocketioSettings.setAllowUniversalAccessFromFileURLs(true);
-        webSocketioSettings.setDomStorageEnabled(true); //允許使用localstorage
-        
+        webSocketioSettings.setDomStorageEnabled(true);
         webSocketioSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSocketioSettings.setSupportMultipleWindows(true);
 
         mSocketIoContextPop = this.getApplicationContext();
 
-
         this.loadWebrtcUrl(mSlideView, "https://slide.covidicq.net/slide-wallet", new JSSlideInterface(MainActivity.this));
         String SlideCovidIcqUrl =  "https://slide.covidicq.net" + "#" + getRandomString(16);
+        Log.i(TAG, "SlideCovidIcqUrl = " + SlideCovidIcqUrl);
         this.loadWebrtcUrl(mSocketIoView, SlideCovidIcqUrl, new JSSocketIoInterface(this));
     }
 
@@ -154,7 +152,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
     public void callCreateRoom(final String externalUrl) {
         mIsSyncSlideHost = true;
         mIsSlideViewTouchDisable = false;
-
         mSocketIoView.loadUrl("javascript:triggerCreateRoom(\""+ externalUrl+ "\");");
     }
 
@@ -182,7 +179,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     class MyJavaScriptInterface {
         @JavascriptInterface
         public void onUrlChange(String url) {
-            
+            Log.d("hydrated", "onUrlChange" + url);
         }
     }
 
@@ -198,7 +195,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         if(mIsSyncSlideHost == true) {
             mSocketIoView.loadUrl("javascript:triggerMulticastUrl(\""+ newURL+ "\");");
         } else {
-        
+            // dont do anything here if I'm not host
         }
     }
 
@@ -225,25 +222,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
 
             WebSettings popSettings = mSocketIoWebViewPop.getSettings();
-            
             mSocketIoWebViewPop.setVerticalScrollBarEnabled(false);
             mSocketIoWebViewPop.setHorizontalScrollBarEnabled(false);
             popSettings.setJavaScriptEnabled(true);
             popSettings.setSaveFormData(true);
             popSettings.setEnableSmoothTransition(true);
-            // Set User Agent
             popSettings.setUserAgentString(mSocketIoUserAgent + "Your App Info/Version");
-            
             popSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-
-            
             mSocketIoWebViewPop.setWebChromeClient(new CustomSocketIoChromeClient());
-
-            
             mSocketIoBuilder = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
             mSocketIoBuilder.setTitle("");
             mSocketIoBuilder.setView(mSocketIoWebViewPop);
-
             mSocketIoBuilder.setButton("Close", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int id) {
@@ -264,14 +253,17 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         @Override
         public void onCloseWindow(WebView window) {
+            //Toast.makeText(contextPop,"onCloseWindow called",Toast.LENGTH_SHORT).show();
             try {
                 mSocketIoWebViewPop.destroy();
             } catch (Exception e) {
+                Log.d("Webview Destroy Error: ", e.getStackTrace().toString());
             }
 
             try {
                 mSocketIoBuilder.dismiss();
             } catch (Exception e) {
+                Log.d("Builder Dismiss Error: ", e.getStackTrace().toString());
             }
 
         }
@@ -291,7 +283,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
             super.onReceivedTitle(view, title);
         }
 
-
         @Override
         public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
             return true;
@@ -305,9 +296,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
             theWebView.setWebChromeClient( new ChromeClient() {
                 @Override
                 public void onProgressChanged(WebView view, int newProgress) {
-                    if (view.getUrl().equals(mSlideViewUrl)) {
+                    if (view.getUrl().equals(mSlideViewUrl))
+                    {
 
-                    } else {
+                    }
+                    else
+                    {
                         mSlideViewUrl = view.getUrl();
                         processSlideViewUrlChange(mSlideViewUrl);
                     }
@@ -342,15 +336,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
                         final String hostName = urlobj.getHost();
                         final String protocolName = urlobj.getProtocol();
                         final String webdomainName = String.format("%s://%s/", protocolName, hostName);
-                        Log.d(TAG, webdomainName);
                         MainActivity.this.runOnUiThread(new Runnable() {
                             @RequiresApi(api = Build.VERSION_CODES.O)
                             @Override
                             public void run() {
-                                Log.d(TAG, request.getOrigin().toString());
                                 if (request.getOrigin().toString().equals(webdomainName)) {
                                     String[] strs = request.getResources();
-                                    Log.d(TAG, String.join(",", strs));
                                     request.grant(request.getResources());
                                 } else {
                                     request.deny();
@@ -370,34 +361,38 @@ public class MainActivity extends Activity implements View.OnClickListener{
 
         theWebView.loadUrl(url);
 
-
         final String pureUrl = (url.split("#")[0]).split("\\?")[0];
+
         if( mSlideLoadedUrl.equals(pureUrl) || mSlideLoadedUrl.equals("")) {
+
+            final Runnable r = new Runnable() {
+                public void run() {
+                    if(theWebView.getUrl() == null) {
+                    }
+                }
+            };
+
             final Handler handler1 = new Handler(Looper.getMainLooper());
-            //handler1.postDelayed(r, 100);
-        } 
+            handler1.postDelayed(r, 100);
+        } else {
+
+        }
         mSlideLoadedUrl = pureUrl;
 
         try {
-            theWebView.addJavascriptInterface(jsInterface, "android_webview");            
+            theWebView.addJavascriptInterface(jsInterface, "android_webview");
+
         } catch(Exception e) {
+
         }
     }
-    
-    String mExternalUrl = "";
+
+    String mExternalUrl = "https://www.canva.com/design/DAEeUzCYfNQ/UMd107pfFzu_1fXYxH2f2A/view#1";
+
     @Override
     public void onClick(View view) {
         int vid = view.getId();
         switch(vid) {
-            case R.id.page_1_btn:
-                
-                break;
-            case R.id.page_2_btn:
-                
-                break;
-            case R.id.page_3_btn:
-                
-                break;
             case R.id.create_room_btn:
                 final String externalUrl = mExternalUrl;
                 this.callCreateRoom(externalUrl);
@@ -466,7 +461,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
         public void notifyRemoteURLWithPostMessage(final String message) {
-            Log.i(TAG,"notifyRemoteURLWithPostMessage is invoked with message = " + message);
+
             new android.os.Handler(Looper.getMainLooper()).postDelayed( new Runnable() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 public void run() {
@@ -516,7 +511,6 @@ public class MainActivity extends Activity implements View.OnClickListener{
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
         public void postMessage(final String message){
-            Log.i(TAG,"postMessage is invoked");
             if(!MainActivity.this.mIsInPipMode) {
                 new AlertDialog.Builder(mContext)
                         .setTitle("溫馨小提醒")
@@ -540,11 +534,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
         public void notifyRemoteVideoOnPlayingWithPostMessage(final String message) {
-            Log.i(TAG,"notifyRemoteVideoOnPlayingWithPostMessage is invoked");
             new android.os.Handler(Looper.getMainLooper()).postDelayed( new Runnable() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 public void run() {
-                    Log.i(TAG,"Processing notifyRemoteVideoOnPlayingWithPostMessage");
                     mIsInPipMode = MainActivity.this.isInPictureInPictureMode();
                     if(mIsInPipMode == true) {
                         if(mIsOpenSound == true) {
@@ -570,13 +562,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
         public void requestReload() {
-            Log.i(TAG,"requestReload is invoked");
             new android.os.Handler(Looper.getMainLooper()).postDelayed( new Runnable() {
                 public void run() {
-                    //mWebView.reload();
-                    //String urlStr = "https://accompany.covidicq.net/webview.html#oo";
                     String urlStr = MainActivity.sUrl;
-                    Log.i(TAG,"urlStr = " + urlStr );
                     MainActivity.this.loadWebrtcUrl(mSlideView, urlStr, new JSSlideInterface(MainActivity.this));
                 }
             }, 1000);
@@ -610,11 +598,9 @@ public class MainActivity extends Activity implements View.OnClickListener{
         @SuppressLint("JavascriptInterface")
         @JavascriptInterface
         public void notifyRemoteVideoOnPlayingWithPostMessage(final String message) {
-            Log.i(TAG,"notifyRemoteVideoOnPlayingWithPostMessage is invoked");
             new android.os.Handler(Looper.getMainLooper()).postDelayed( new Runnable() {
                 @RequiresApi(api = Build.VERSION_CODES.N)
                 public void run() {
-                    Log.i(TAG,"Processing notifyRemoteVideoOnPlayingWithPostMessage");
                     mIsInPipMode = MainActivity.this.isInPictureInPictureMode();
                     if(mIsInPipMode == true) {
                         if(mIsOpenSound == true) {
