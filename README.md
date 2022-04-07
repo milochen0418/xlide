@@ -3,14 +3,14 @@ The project name on the github is xlide.
 And the original name is Sync-Slide 
 
 
-## Environment setup
+## 1. Environment setup
 ### Server  ./server 
 you can start your server by following this document ./server/README.md
 ### Android App ./android
 Open the android project and build it. 
 
 
-## Description of this product
+## 2. Description of this product
 Build the stronger giver culture through slide
 xlide give the add-on function for slide content
 There are two feature currently
@@ -36,8 +36,8 @@ That's why I have this idea and make it.
 There is a news for Sync-Slide here
 https://vision.udn.com/vision/story/12425/6110605
 
-And the following picture
-![](https://i.imgur.com/gpPwK5N.png)
+Announcing in social network. 
+https://www.facebook.com/groups/metaversity/posts/340779141285880/
 
 
 
