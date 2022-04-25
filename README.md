@@ -39,6 +39,8 @@ https://vision.udn.com/vision/story/12425/6110605
 Announcing in social network. (35K+ read, 50+ share)  
 https://www.facebook.com/groups/metaversity/posts/340779141285880/
 
+The slide to introduce the concept of Sync-Slide
+https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view
 
 ## 3. download
 Scan QRCode to download current android app.  
