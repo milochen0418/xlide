@@ -1,6 +1,9 @@
 # xlide
-The project name on the github is xlide. (Open in GPL 3).  
-The original name is Sync-Slide.   
+|      |      |
+|:------|:------|
+|<br>[<img width="406" alt="Sync Slide Image" src="https://user-images.githubusercontent.com/12568287/167666252-47eec02b-facf-4b5d-b45b-df5af5452aea.png">](https://www.youtube.com/shorts/mS1ngYYkI0w) |The project name on the github is xlide (Open in GPL 3) and its original name is Sync-Slide.<br> Right now, people can make a presentations with [Canva](https://en.wikipedia.org/wiki/Canva) slide's content by Sync-Slide. And people hope it can support good slide's content like Canva.<br> There is a [1 minute short demo video](https://www.youtube.com/shorts/mS1ngYYkI0w) for you to understand quickly. And there is a [4 minute video](https://youtu.be/qk305RF0JMs) with speaking in English & Chinese for you to understand more. And I made a presentation for Japanese and Taiwanese by this [slide](https://www.canva.com/design/DAE3xBmEZvM/Cbb_3j80njGByPNQOKo7ow/view?utm_content=DAE3xBmEZvM&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) before, so you can understand this product more through it| 
+
+
 ## Brief History
 | Date  | progress |
 |:--------|:--------|
