@@ -1,7 +1,10 @@
 # xlide
-The project name on the github is xlide. 
-And the original name is Sync-Slide 
+The project name on the github is xlide.  
+The original name is Sync-Slide.  
 
+[This project get win in Demo Day 2021-22 competition at g0v ](https://drive.google.com/file/d/1QfS99KNSfM-NpPILRMflKeFAQxcDwZPE/view?usp=sharing).  
+<img width="201" alt="Screen Shot 2022-05-10 at 8 26 04 AM" src="https://user-images.githubusercontent.com/12568287/167519289-63e3907b-b28a-4a0d-8599-5dcb29c3d392.png">  
+Thanks for the helps from g0v.
 
 ## 1. Environment setup
 ### Server  ./server 
@@ -44,5 +47,5 @@ https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view
 
 ## 3. download
 Scan QRCode to download current android app.  
-![qrcode (1)](https://user-images.githubusercontent.com/12568287/162193581-c415a713-98af-44c1-b642-c3abf2af2010.png)
-
+![qrcode (1)](https://user-images.githubusercontent.com/12568287/162193581-c415a713-98af-44c1-b642-c3abf2af2010.png)  
+Or you can download from this [link](https://files.covidicq.net/xlide/app.apk).  
