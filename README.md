@@ -1,10 +1,18 @@
 # xlide
-The project name on the github is xlide.  
+The project name on the github is xlide. (Open in  
 The original name is Sync-Slide.  
+| Date  | progress |
+|:--------|:--------|
+|**2021 Aug.**  | Announce the idea of SyncSlide in [the post of Metaversity](https://www.facebook.com/groups/metaversity/posts/220938086603320/)  |
+|**2021 Sep.**  | Start to coding SyncSlide project. |
+|**2021 Oct.**  | Announce the first demo of SyncSlide in [the post of Python Taiwan](https://www.facebook.com/groups/pythontw/posts/10161648064908438/)  |
+|**2021 Nov.**  | Pitch this demo and idea to some offline community and start to consider the scenario of both online/offline.  |
+|**2022 Jan.**  | The project join the Demo Day 2021-22 competition at g0v Sch001 and [get win](https://drive.google.com/file/d/1QfS99KNSfM-NpPILRMflKeFAQxcDwZPE/view?usp=sharing)  (Thanks for the helps from g0v)  |
+|**2022 Feb.**  | SyncSlide is demo between Taiwan & Japan. [reference](https://sdgs.udn.com/sdgs/story/12425/6110605). Also announce this news in Metaversity [(35K+ read, 50+ share)](https://www.facebook.com/groups/metaversity/posts/340779141285880/)   |
+|**2022 Mar.**  | To open source in GPL 3. And the project name is xlide.  |
 
-[This project get win in Demo Day 2021-22 competition at g0v ](https://drive.google.com/file/d/1QfS99KNSfM-NpPILRMflKeFAQxcDwZPE/view?usp=sharing).  
-<img width="201" alt="Screen Shot 2022-05-10 at 8 26 04 AM" src="https://user-images.githubusercontent.com/12568287/167519289-63e3907b-b28a-4a0d-8599-5dcb29c3d392.png">  
-Thanks for the helps from g0v.
+
+
 
 ## 1. Environment setup
 ### Server  ./server 
