@@ -1,6 +1,7 @@
 # xlide
-The project name on the github is xlide. (Open in  
-The original name is Sync-Slide.  
+The project name on the github is xlide. (Open in GPL 3).  
+The original name is Sync-Slide.   
+## Brief History
 | Date  | progress |
 |:--------|:--------|
 |**2021 Aug.**  | Announce the idea of SyncSlide in [the post of Metaversity](https://www.facebook.com/groups/metaversity/posts/220938086603320/)  |
@@ -21,7 +22,14 @@ you can start your server by following this document ./server/README.md
 Open the android project and build it. 
 
 
-## 2. Description of this product
+
+## 2. download
+Scan QRCode to download current android app.  
+![qrcode (1)](https://user-images.githubusercontent.com/12568287/162193581-c415a713-98af-44c1-b642-c3abf2af2010.png)  
+Or you can download from this [link](https://files.covidicq.net/xlide/app.apk).  
+
+
+## 3. Description of this product
 Build the stronger giver culture through slide
 xlide give the add-on function for slide content
 There are two feature currently
@@ -52,8 +60,3 @@ https://www.facebook.com/groups/metaversity/posts/340779141285880/
 
 The slide to introduce the concept of Sync-Slide
 https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view
-
-## 3. download
-Scan QRCode to download current android app.  
-![qrcode (1)](https://user-images.githubusercontent.com/12568287/162193581-c415a713-98af-44c1-b642-c3abf2af2010.png)  
-Or you can download from this [link](https://files.covidicq.net/xlide/app.apk).  
