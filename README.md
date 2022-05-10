@@ -9,7 +9,7 @@ The original name is Sync-Slide.
 |**2021 Oct.**  | Announce the first demo of SyncSlide in [the post of Python Taiwan](https://www.facebook.com/groups/pythontw/posts/10161648064908438/)  |
 |**2021 Nov.**  | Pitch this demo and idea to some offline community and start to consider the scenario of both online/offline.  |
 |**2022 Jan.**  | The project join the Demo Day 2021-22 competition at g0v Sch001 and [get win](https://drive.google.com/file/d/1QfS99KNSfM-NpPILRMflKeFAQxcDwZPE/view?usp=sharing)  (Thanks for the helps from g0v)  |
-|**2022 Feb.**  | SyncSlide is demo between Taiwan & Japan. [reference](https://sdgs.udn.com/sdgs/story/12425/6110605). Also announce this news in Metaversity [(35K+ read, 50+ share)](https://www.facebook.com/groups/metaversity/posts/340779141285880/)   |
+|**2022 Feb.**  | SyncSlide is demo between Taiwan & Japan( [reference news](https://sdgs.udn.com/sdgs/story/12425/6110605)). <br>Also announce this news in Metaversity [(35K+ read, 50+ share)](https://www.facebook.com/groups/metaversity/posts/340779141285880/)   |
 |**2022 Mar.**  | To open source in GPL 3. And the project name is xlide.  |
 
 
