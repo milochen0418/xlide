@@ -23,7 +23,8 @@
 you can start your server by following this document ./server/README.md
 ### Android App ./android
 Open the android project and build it. 
-
+### Database ./database
+(In design) The new database system can support people in moving their data into the database on another server. 
 
 
 ## 2. download
