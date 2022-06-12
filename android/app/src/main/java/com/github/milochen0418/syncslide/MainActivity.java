@@ -303,6 +303,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
                     else
                     {
                         mSlideViewUrl = view.getUrl();
+                        // Let WegView auto play videos by inject and running the following javascript
+                        view.loadUrl("javascript:(function() { var videos = document.getElementsByTagName('video'); for(var i=0;i<videos.length;i++ ){videos[i].play();}})()");
                         processSlideViewUrlChange(mSlideViewUrl);
                     }
                     super.onProgressChanged(view, newProgress);
