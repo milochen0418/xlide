@@ -222,14 +222,20 @@ public class MainActivity extends Activity implements View.OnClickListener{
             }
 
             WebSettings popSettings = mSocketIoWebViewPop.getSettings();
+            // WebView tweaks for popups
             mSocketIoWebViewPop.setVerticalScrollBarEnabled(false);
             mSocketIoWebViewPop.setHorizontalScrollBarEnabled(false);
             popSettings.setJavaScriptEnabled(true);
             popSettings.setSaveFormData(true);
             popSettings.setEnableSmoothTransition(true);
+            // Set User Agent
             popSettings.setUserAgentString(mSocketIoUserAgent + "Your App Info/Version");
+            // to support content re-layout for redirects
             popSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+            //handle new popups 
             mSocketIoWebViewPop.setWebChromeClient(new CustomSocketIoChromeClient());
+
+            //set the WebView as the AlertDialog.Builder's view
             mSocketIoBuilder = new AlertDialog.Builder(MainActivity.this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT).create();
             mSocketIoBuilder.setTitle("");
             mSocketIoBuilder.setView(mSocketIoWebViewPop);
@@ -283,8 +289,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
             super.onReceivedTitle(view, title);
         }
 
+        //HTML console.log will show to Android LogCat by the following code 
         @Override
         public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+            //android.util.Log.i(TAG, consoleMessage.message());
+            Log.i("WebView", consoleMessage.message());
             return true;
         }
     }
