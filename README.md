@@ -1,3 +1,9 @@
+
+![Screen Shot 2023-06-19 at 2 19 04 PM](https://github.com/milochen0418/xlide/assets/12568287/c116df08-9f5d-4f73-b090-d4033f09dd99)
+
+From:
+[【零時小學校 2021 成果手冊】從零重新思考教育：數位原生世代的教育實踐.pdf](https://github.com/milochen0418/xlide/files/11784904/2021.pdf)
+
 # xlide
 |      |      |
 |:------|:------|
