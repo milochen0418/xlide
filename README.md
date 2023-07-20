@@ -70,3 +70,7 @@ https://www.facebook.com/groups/metaversity/posts/340779141285880/
 
 The slide to introduce the concept of Sync-Slide
 https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view
+
+We may use this tool on Discord Conversation Club too. The people in the club can watch the same slide.  
+<img width="1440" alt="Screenshot 2023-07-21 at 2 22 11 AM" src="https://github.com/milochen0418/xlide/assets/12568287/054d0bca-7a60-43d7-9b6a-48c456c0dc7e">
+
