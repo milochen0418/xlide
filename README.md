@@ -40,37 +40,23 @@ Or you can download from this [link](https://files.covidicq.net/xlide/app.apk).
 
 
 ## 3. Description of this product
-Build the stronger giver culture through slide
-xlide give the add-on function for slide content
-There are two feature currently
-(1) sync the slide so many people can watch same page of the slide in real-time.  
-(2) Puts the slide in your wallet and carry them whenever, 
-so that you can present your old slide online/offline quickly.   
+🎉 **Introducing Sync-Slide: Revolutionizing Presentations in the Metaverse and Beyond!** 🎉
 
+💼 Ever wished to ensure everyone’s on the same slide in real-time? To have your slides accessible anytime, anywhere, online or offline? Enter **Sync-Slide** \- the ultimate slide solution with: 1️⃣ **Real-time Synchronization:** Keep everyone on the same page during presentations, irrespective of location! 2️⃣ **Slide Wallet:** Store and retrieve your slides on-the-go for those impromptu moments!
 
-I'm founder of the largest Gather Town community in the world. 
-Our name is call Gather Town Taiwan Metaversity. 
-The members here are come from 30+ nations. 
-In this community, I found out people need to some tool like this. 
-Not only in the metaverse but in the real world.
+🌍 As the proud founder of **Gather Town Taiwan Metaversity** – the largest Gather Town community globally with members spanning 30+ countries, I’ve recognized a universal need for such a tool. The inspiration stems from wanting to foster a culture of giving, whether in the expansive metaverse or our tangible world.
 
+💡 If we aim for a world more wondrous than yesterday, empowering givers is crucial. **Sync-Slide** isn't just a tool; it's a step towards creating a nurturing culture and a robust environment for every giver out there.
 
-If we hope world is beautiful than before,
-I think the roles of giver is very important. 
-The final goal of this product is make a good 
-culture and good environment and make the giver stronger.
+📰 **In The News:** Sync-Slide has been featured on [Vision UDN](https://vision.udn.com/vision/story/12425/6110605)!
 
+🌐 **Social Buzz:** Our announcement post on [Facebook](https://www.facebook.com/groups/metaversity/posts/340779141285880/) garnered a massive 35K+ reads and 50+ shares!
 
-That's why I have this idea and make it.
-There is a news for Sync-Slide here
-https://vision.udn.com/vision/story/12425/6110605
+🖥️ **Discover More:** Dive into the innovative concept of Sync-Slide through our [introductory presentation](https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view).
 
-Announcing in social network. (35K+ read, 50+ share)  
-https://www.facebook.com/groups/metaversity/posts/340779141285880/
+🎮 **Bonus:** Gamers and enthusiasts, stay tuned! We're exploring possibilities to integrate Sync-Slide into **Discord Conversation Club**, ensuring a cohesive slide viewing experience for everyone!
 
-The slide to introduce the concept of Sync-Slide
-https://www.canva.com/design/DAE3xBmEZvM/AO7GLVUdctMJjCf_1qdp-w/view
+Join us on this exciting journey, shaping a world where knowledge sharing is seamless and powerful.🌟
 
-We may use this tool on Discord Conversation Club too. The people in the club can watch the same slide.  
 <img width="1440" alt="Screenshot 2023-07-21 at 2 22 11 AM" src="https://github.com/milochen0418/xlide/assets/12568287/054d0bca-7a60-43d7-9b6a-48c456c0dc7e">
 
